@@ -10,6 +10,7 @@ import { setNutrition } from 'src/utils/schema/setNutrition';
 import { setAggregateRating } from 'src/utils/schema/setAggregateRating';
 import { setVideo } from 'src/utils/schema/setVideo';
 import { setInstruction } from 'src/utils/schema/setInstruction';
+import { SocialProfileJsonLdProps } from './socialProfile';
 
 type Director = {
   name: string;
@@ -22,6 +23,9 @@ interface DefaultDataProps {
 interface ExtendedCourseJsonLdProps
   extends DefaultDataProps,
     CourseJsonLdProps {}
+interface ExtendedPersonJsonLdProps
+  extends DefaultDataProps,
+    SocialProfileJsonLdProps {}
 
 interface ExtendedRecipeJsonLdProps
   extends DefaultDataProps,
@@ -38,13 +42,14 @@ export interface MovieJsonLdProps {
 }
 
 export interface CarouselJsonLdProps extends JsonLdProps {
-  ofType: 'default' | 'movie' | 'recipe' | 'course';
+  ofType: 'default' | 'movie' | 'recipe' | 'course' | 'person';
   data:
     | any
     | DefaultDataProps[]
     | MovieJsonLdProps[]
     | ExtendedCourseJsonLdProps[]
-    | ExtendedRecipeJsonLdProps[];
+    | ExtendedRecipeJsonLdProps[]
+    | ExtendedPersonJsonLdProps;
 }
 
 function CarouselJsonLd({
@@ -146,6 +151,18 @@ function CarouselJsonLd({
             },
           }),
         );
+
+      case 'person':
+        return (data as ExtendedPersonJsonLdProps[]).map((item, index) => ({
+          '@type': 'ListItem',
+          position: `${index + 1}`,
+          item: {
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            url: item.url,
+            name: item.name,
+          },
+        }));
     }
   }
 
