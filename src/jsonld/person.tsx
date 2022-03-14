@@ -9,7 +9,7 @@ export interface PersonJsonLdProps extends JsonLdProps {
   givenName: string;
   description?: string;
   email?: string;
-  phone: string;
+  telephone: string;
   jobTitle: string;
   image?: string;
   subjectOf: CreativeWork[];

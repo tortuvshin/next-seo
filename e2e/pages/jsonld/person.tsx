@@ -9,7 +9,7 @@ function Person() {
         familyName="Byambaa"
         givenName="Turtuvshin"
         jobTitle="Software engineer"
-        phone="+97699888811"
+        telephone="+97699888811"
         email="turuu@dev.mn"
         description=""
         subjectOf={[{}]}

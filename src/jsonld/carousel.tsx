@@ -172,7 +172,7 @@ function CarouselJsonLd({
             givenName: item.givenName,
             description: item.description,
             email: item.email,
-            phone: item.phone,
+            telephone: item.telephone,
             jobTitle: item.jobTitle,
             image: item.image,
             subjectOf: item.subjectOf.map(setCreativeWork),
