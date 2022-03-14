@@ -1,6 +1,6 @@
 {
   "name": "@intelligo-mn/next-seo",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "SEO plugin for Next.js projects",
   "source": "src/index.tsx",
   "main": "lib/next-seo.js",
@@ -49,7 +49,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/garmeeh/next-seo.git"
+    "url": "https://github.com/tortuvshin/next-seo.git"
   },
   "keywords": [
     "next.js",
@@ -59,9 +59,9 @@
     "ssr"
   ],
   "bugs": {
-    "url": "https://github.com/garmeeh/next-seo/issues"
+    "url": "https://github.com/tortuvshin/next-seo/issues"
   },
-  "homepage": "https://github.com/garmeeh/next-seo#readme",
+  "homepage": "https://github.com/tortuvshin/next-seo#readme",
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",

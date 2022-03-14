@@ -11,6 +11,8 @@ import { setAggregateRating } from 'src/utils/schema/setAggregateRating';
 import { setVideo } from 'src/utils/schema/setVideo';
 import { setInstruction } from 'src/utils/schema/setInstruction';
 import { SocialProfileJsonLdProps } from './socialProfile';
+import { NewsArticleJsonLdProps } from './newsarticle';
+import { setPublisher } from 'src/utils/schema/setPublisher';
 
 type Director = {
   name: string;
@@ -30,6 +32,9 @@ interface ExtendedPersonJsonLdProps
 interface ExtendedRecipeJsonLdProps
   extends DefaultDataProps,
     RecipeJsonLdProps {}
+interface ExtendedNewsArticleJsonLdProps
+  extends DefaultDataProps,
+    NewsArticleJsonLdProps {}
 
 export interface MovieJsonLdProps {
   name: string;
@@ -42,14 +47,15 @@ export interface MovieJsonLdProps {
 }
 
 export interface CarouselJsonLdProps extends JsonLdProps {
-  ofType: 'default' | 'movie' | 'recipe' | 'course' | 'person';
+  ofType: 'default' | 'movie' | 'recipe' | 'course' | 'person' | 'newsArticle';
   data:
     | any
     | DefaultDataProps[]
     | MovieJsonLdProps[]
     | ExtendedCourseJsonLdProps[]
     | ExtendedRecipeJsonLdProps[]
-    | ExtendedPersonJsonLdProps;
+    | ExtendedPersonJsonLdProps[]
+    | ExtendedNewsArticleJsonLdProps[];
 }
 
 function CarouselJsonLd({
@@ -163,6 +169,31 @@ function CarouselJsonLd({
             name: item.name,
           },
         }));
+
+      case 'newsArticle':
+        return (data as ExtendedNewsArticleJsonLdProps[]).map(
+          (item, index) => ({
+            '@type': 'ListItem',
+            position: `${index + 1}`,
+            item: {
+              '@context': 'https://schema.org',
+              '@type': 'NewsArticle',
+              mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': item.url,
+              },
+              headline: item.title,
+              image: item.images,
+              articleSection: item.section,
+              dateCreated: item.dateCreated || item.datePublished,
+              datePublished: item.datePublished,
+              dateModified: item.dateModified || item.datePublished,
+              author: setAuthor(item.authorName),
+              publisher: setPublisher(item.publisherName, item.publisherLogo),
+              articleBody: item.body,
+            },
+          }),
+        );
     }
   }
 
