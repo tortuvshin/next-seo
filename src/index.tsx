@@ -37,6 +37,7 @@ export {
   CollectionPageJsonLdProps,
 } from './jsonld/collectionPage';
 export { default as ProductJsonLd, ProductJsonLdProps } from './jsonld/product';
+export { default as PersonJsonLd, PersonJsonLdProps } from './jsonld/person';
 export {
   default as SoftwareAppJsonLd,
   SoftwareAppJsonLdProps,

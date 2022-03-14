@@ -10,9 +10,10 @@ import { setNutrition } from 'src/utils/schema/setNutrition';
 import { setAggregateRating } from 'src/utils/schema/setAggregateRating';
 import { setVideo } from 'src/utils/schema/setVideo';
 import { setInstruction } from 'src/utils/schema/setInstruction';
-import { SocialProfileJsonLdProps } from './socialProfile';
 import { NewsArticleJsonLdProps } from './newsarticle';
 import { setPublisher } from 'src/utils/schema/setPublisher';
+import { PersonJsonLdProps } from './person';
+import { setCreativeWork } from 'src/utils/schema/setCreativeWork';
 
 type Director = {
   name: string;
@@ -27,7 +28,7 @@ interface ExtendedCourseJsonLdProps
     CourseJsonLdProps {}
 interface ExtendedPersonJsonLdProps
   extends DefaultDataProps,
-    SocialProfileJsonLdProps {}
+    PersonJsonLdProps {}
 
 interface ExtendedRecipeJsonLdProps
   extends DefaultDataProps,
@@ -167,6 +168,14 @@ function CarouselJsonLd({
             '@type': 'Person',
             url: item.url,
             name: item.name,
+            familyName: item.familyName,
+            givenName: item.givenName,
+            description: item.description,
+            email: item.email,
+            phone: item.phone,
+            jobTitle: item.jobTitle,
+            image: item.image,
+            subjectOf: item.subjectOf.map(setCreativeWork),
           },
         }));
 
