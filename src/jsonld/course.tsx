@@ -1,13 +1,20 @@
 import React from 'react';
 
-import type { Provider } from 'src/types';
+import type { Person, Provider } from 'src/types';
+import { setPerson } from 'src/utils/schema/setPerson';
 import { setProvider } from 'src/utils/schema/setProvider';
 
 import { JsonLd, JsonLdProps } from './jsonld';
 
 export interface CourseJsonLdProps extends JsonLdProps {
   courseName: string;
+  url: string;
   description: string;
+  abstract: string;
+  numberOfCredits: string;
+  educationalLevel: string;
+  author: Person;
+  contentLocation: string;
   provider: Provider;
 }
 
@@ -16,12 +23,14 @@ function CourseJsonLd({
   keyOverride,
   courseName,
   provider,
+  author,
   ...rest
 }: CourseJsonLdProps) {
   const data = {
     name: courseName,
     ...rest,
     provider: setProvider(provider),
+    author: setPerson(author),
   };
   return (
     <JsonLd

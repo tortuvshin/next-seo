@@ -38,8 +38,17 @@ export type Action = {
   target: string;
 };
 
+//TODO: name ийг устгах
 export interface Person {
   name: string;
+  familyName: string;
+  givenName: string;
+  description: string;
+  email: string;
+  telephone: string;
+  jobTitle: string;
+  image?: string;
+  subjectOf?: CreativeWork[];
 }
 export interface Answer {
   text: string;
