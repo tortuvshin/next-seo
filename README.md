@@ -1,16 +1,12 @@
 # Next SEO
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors)
-![npm](https://img.shields.io/npm/dw/next-seo?style=flat-square)
+![npm](https://img.shields.io/npm/dw/@chinggis-systems/@chinggis-systems/next-seo?style=flat-square)
 
 Next SEO is a plugin that makes managing your SEO easier in Next.js projects.
 
 Pull requests are very welcome. Also make sure to check out the issues for feature requests if you are
 looking for inspiration on what to add.
-
-**Feel like supporting this free plugin?**
-
-<a href="https://www.buymeacoffee.com/garmeeh" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
 **Table of Contents**
 
@@ -88,13 +84,13 @@ looking for inspiration on what to add.
 First, install it:
 
 ```bash
-npm install next-seo
+npm install @chinggis-systems/next-seo
 ```
 
 or
 
 ```bash
-yarn add next-seo
+yarn add @chinggis-systems/next-seo
 ```
 
 ### Add SEO to Page
@@ -104,7 +100,7 @@ Then you need to import `NextSeo` and add the desired properties. This will rend
 **Example with just title and description:**
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -124,7 +120,7 @@ But `NextSeo` gives you many more options that you can add. See below for a typi
 **Typical page example:**
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -173,9 +169,9 @@ export default Page;
 
 Props `cardType`, `site`, `handle` are equivalent to `twitter:card`, `twitter:site`, `twitter:creator`. Documentation can be founded [here](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary).
 
-Twitter will read the `og:title`, `og:image` and `og:description` tags for their card. `next-seo` omits `twitter:title`, `twitter:image` and `twitter:description` to avoid duplication.
+Twitter will read the `og:title`, `og:image` and `og:description` tags for their card. `@chinggis-systems/next-seo` omits `twitter:title`, `twitter:image` and `twitter:description` to avoid duplication.
 
-Some tools may report this an error. See [Issue #14](https://github.com/garmeeh/next-seo/issues/14)
+Some tools may report this an error. See [Issue #14](https://github.com/garmeeh/@chinggis-systems/next-seo/issues/14)
 
 ### Default SEO Configuration
 
@@ -183,16 +179,16 @@ Some tools may report this an error. See [Issue #14](https://github.com/garmeeh/
 
 To achieve this, you will need to create a custom `<App>`. In your pages directory create a new file, `_app.js`. See the Next.js docs [here](https://nextjs.org/docs/advanced-features/custom-app) for more info on a custom `<App>`.
 
-Within this file you will need to import `DefaultSeo` from `next-seo` and pass it props.
+Within this file you will need to import `DefaultSeo` from `@chinggis-systems/next-seo` and pass it props.
 
 Here is a typical example:
 
 ```jsx
 import App, { Container } from 'next/app';
-import { DefaultSeo } from 'next-seo';
+import { DefaultSeo } from '@chinggis-systems/next-seo';
 
 // import your default seo configuration
-import SEO from '../next-seo.config';
+import SEO from '../@chinggis-systems/next-seo.config';
 
 export default class MyApp extends App {
   render() {
@@ -221,7 +217,7 @@ export default class MyApp extends App {
 
 To work properly, `DefaultSeo` should be placed above (before) `Component` due to behavior of Next.js internals.
 
-Alternatively, you can also create a config file to store default values such as `next-seo.config.js`
+Alternatively, you can also create a config file to store default values such as `@chinggis-systems/next-seo.config.js`
 
 ```js
 export default {
@@ -242,7 +238,7 @@ export default {
 import at the top of `_app.js`
 
 ```jsx
-import SEO from '../next-seo.config';
+import SEO from '../@chinggis-systems/next-seo.config';
 ```
 
 and the `DefaultSeo` component can be used like this instead
@@ -328,14 +324,14 @@ defaultTitle = 'Next SEO';
 
 Setting this to `true` will set `noindex,follow` (to set `nofollow`, please refer to [`nofollow`](#noFollow)). This works on a page by page basis. This property works in tandem with the `nofollow` property and together they populate the `robots` meta tag.
 
-**Note:** The `noindex` and the [`nofollow`](#noFollow) properties are a little different than all the others in the sense that setting them as a default does not work as expected. This is due to the fact Next SEO already has a default of `index,follow` because `next-seo` is a SEO plugin after all. So if you want to globally these properties, please see [dangerouslySetAllPagesToNoIndex](#dangerouslySetAllPagesToNoIndex) and [dangerouslySetAllPagesToNoFollow](#dangerouslySetAllPagesToNoFollow).
+**Note:** The `noindex` and the [`nofollow`](#noFollow) properties are a little different than all the others in the sense that setting them as a default does not work as expected. This is due to the fact Next SEO already has a default of `index,follow` because `@chinggis-systems/next-seo` is a SEO plugin after all. So if you want to globally these properties, please see [dangerouslySetAllPagesToNoIndex](#dangerouslySetAllPagesToNoIndex) and [dangerouslySetAllPagesToNoFollow](#dangerouslySetAllPagesToNoFollow).
 
 **Example No Index on a single page:**
 
 If you have a single page that you want no indexed you can achieve this by:
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -361,14 +357,14 @@ The only way to unset this, is by removing the prop from the `DefaultSeo` in you
 
 Setting this to `true` will set `index,nofollow` (to set `noindex`, please refer to [`noindex`](#noIndex)). This works on a page by page basis. This property works in tandem with the `noindex` property and together they populate the `robots` meta tag.
 
-**Note:** Unlike for the other properties, setting `noindex` and [`nofollow`](#noFollow) by default does not work as expected. This is because Next SEO has a default of `index,follow`, since `next-seo` is an SEO plugin after all. If you want to globally allow these properties, see [dangerouslySetAllPagesToNoIndex](#dangerouslySetAllPagesToNoIndex) and [dangerouslySetAllPagesToNoFollow](#dangerouslySetAllPagesToNoFollow).
+**Note:** Unlike for the other properties, setting `noindex` and [`nofollow`](#noFollow) by default does not work as expected. This is because Next SEO has a default of `index,follow`, since `@chinggis-systems/next-seo` is an SEO plugin after all. If you want to globally allow these properties, see [dangerouslySetAllPagesToNoIndex](#dangerouslySetAllPagesToNoIndex) and [dangerouslySetAllPagesToNoFollow](#dangerouslySetAllPagesToNoFollow).
 
 **Example No Follow on a single page:**
 
 If you have a single page that you want no indexed you can achieve this by:
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -407,7 +403,7 @@ In addition to `index, follow` the `robots` meta tag accepts more properties to 
 Example:
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -422,7 +418,7 @@ const Page = () => (
         maxVideoPreview: -1,
       }}
     />
-    <p>Additional robots props in Next-SEO!!</p>
+    <p>Additional robots props in @chinggis-systems/next-seo!!</p>
   </>
 );
 
@@ -450,9 +446,9 @@ For more reference about the `X-Robots-Tag` visit [Google Search Central - Contr
 
 #### Twitter
 
-Twitter will read the `og:title`, `og:image` and `og:description` tags for their card, this is why `next-seo` omits `twitter:title`, `twitter:image` and `twitter:description` so not to duplicate.
+Twitter will read the `og:title`, `og:image` and `og:description` tags for their card, this is why `@chinggis-systems/next-seo` omits `twitter:title`, `twitter:image` and `twitter:description` so not to duplicate.
 
-Some tools may report this an error. See [Issue #14](https://github.com/garmeeh/next-seo/issues/14)
+Some tools may report this an error. See [Issue #14](https://github.com/garmeeh/@chinggis-systems/next-seo/issues/14)
 
 #### facebook
 
@@ -621,7 +617,7 @@ Next SEO currently supports:
 #### Basic
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -678,7 +674,7 @@ Supplying multiple images will not break anything, but only one will be added to
 Full info on [http://ogp.me/](http://ogp.me/#type_video)
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -749,7 +745,7 @@ Supplying multiple images will not break anything, but only one will be added to
 #### Article
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -825,7 +821,7 @@ Supplying multiple of any of the above will not break anything, but only one wil
 #### Book
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -899,7 +895,7 @@ Supplying multiple of any of the above will not break anything, but only one wil
 #### Profile
 
 ```jsx
-import { NextSeo } from 'next-seo';
+import { NextSeo } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -978,7 +974,7 @@ Pull request very welcome to add any from the list [found on here](https://devel
 
 #### Handling multiple instances
 
-If your page requires multiple instances of a given JSON-LD component, you can specify unique `keyOverride` properties, and `next-seo` will handle the rest.
+If your page requires multiple instances of a given JSON-LD component, you can specify unique `keyOverride` properties, and `@chinggis-systems/next-seo` will handle the rest.
 
 This comes in handy for blog rolls, search results, and overview pages.
 
@@ -991,7 +987,7 @@ Please fully research when you should and shouldn't add multiple instances of JS
 ### Article
 
 ```jsx
-import { ArticleJsonLd } from 'next-seo';
+import { ArticleJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1020,7 +1016,7 @@ export default Page;
 ### Breadcrumb
 
 ```jsx
-import { BreadcrumbJsonLd } from 'next-seo';
+import { BreadcrumbJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1067,7 +1063,7 @@ export default Page;
 ### Blog
 
 ```jsx
-import { ArticleJsonLd } from 'next-seo';
+import { ArticleJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1095,7 +1091,7 @@ export default Page;
 ### Recipe
 
 ```jsx
-import { RecipeJsonLd } from 'next-seo';
+import { RecipeJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1189,7 +1185,7 @@ export default Page;
 ### Sitelinks Search Box
 
 ```jsx
-import { SiteLinksSearchBoxJsonLd } from 'next-seo';
+import { SiteLinksSearchBoxJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1225,7 +1221,7 @@ export default Page;
 ### Course
 
 ```jsx
-import { CourseJsonLd } from 'next-seo';
+import { CourseJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1262,7 +1258,7 @@ export default Page;
 ### Dataset
 
 ```jsx
-import { DatasetJsonLd } from 'next-seo';
+import { DatasetJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1294,7 +1290,7 @@ export default Page;
 ### Corporate Contact
 
 ```jsx
-import { CorporateContactJsonLd } from 'next-seo';
+import { CorporateContactJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1350,7 +1346,7 @@ export default Page;
 ### FAQ Page
 
 ```jsx
-import { FAQPageJsonLd } from 'next-seo';
+import { FAQPageJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1384,7 +1380,7 @@ export default Page;
 ### Job Posting
 
 ```jsx
-import { JobPostingJsonLd } from 'next-seo';
+import { JobPostingJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1656,7 +1652,7 @@ Images are recommended for most of the types that you can use for `LocalBusiness
 ### Logo
 
 ```jsx
-import { LogoJsonLd } from 'next-seo';
+import { LogoJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1679,7 +1675,7 @@ export default Page;
 ### Product
 
 ```jsx
-import { ProductJsonLd } from 'next-seo';
+import { ProductJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1801,7 +1797,7 @@ More info on the product data type can be found [here](https://developers.google
 ### Social Profile
 
 ```jsx
-import { SocialProfileJsonLd } from 'next-seo';
+import { SocialProfileJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1848,7 +1844,7 @@ export default Page;
 ### News Article
 
 ```jsx
-import { NewsArticleJsonLd } from 'next-seo';
+import { NewsArticleJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1882,7 +1878,7 @@ export default Page;
 ### Video
 
 ```jsx
-import { VideoJsonLd } from 'next-seo';
+import { VideoJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -1943,7 +1939,7 @@ export default Page;
 ### VideoGame
 
 ```jsx
-import { VideoGameJsonLd } from 'next-seo';
+import { VideoGameJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -2032,7 +2028,7 @@ export default Page;
 ### Event
 
 ```jsx
-import { EventJsonLd } from 'next-seo';
+import { EventJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -2157,7 +2153,7 @@ For reference and more info check [Google's Search Event DataType](https://devel
 Q&A pages are web pages that contain data in a question and answer format, which is one question followed by its answers.
 
 ```jsx
-import { QAPageJsonLd } from 'next-seo';
+import { QAPageJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -2252,7 +2248,7 @@ For reference and more info check [Google's Search Q&A DataType](https://develop
 Collection pages are web pages. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as breadcrumb may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page.
 
 ```jsx
-import { CollectionPageJsonLd } from 'next-seo';
+import { CollectionPageJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -2323,7 +2319,7 @@ For reference and more info check [Collection Page DataType](https://schema.org/
 Profile pages are web pages. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as breadcrumb may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page.
 
 ```jsx
-import { ProfilePageJsonLd } from 'next-seo';
+import { ProfilePageJsonLd } from '@chinggis-systems/next-seo';
 
 const Page = () => (
   <>
@@ -2376,7 +2372,7 @@ For reference and more info check [Profile Page DataType](https://schema.org/Pro
 
 ```jsx
 import React from 'react';
-import { CarouselJsonLd } from 'next-seo';
+import { CarouselJsonLd } from '@chinggis-systems/next-seo';
 
 export default () => (
   <>
@@ -2404,7 +2400,7 @@ export default () => (
 
 ```jsx
 import React from 'react';
-import { CarouselJsonLd } from 'next-seo';
+import { CarouselJsonLd } from '@chinggis-systems/next-seo';
 
 export default () => (
   <>
@@ -2449,7 +2445,7 @@ export default () => (
 
 ```jsx
 import React from 'react';
-import { CarouselJsonLd } from 'next-seo';
+import { CarouselJsonLd } from '@chinggis-systems/next-seo';
 
 export default () => (
   <>
@@ -2519,7 +2515,7 @@ export default () => (
 
 ```jsx
 import React from 'react';
-import { CarouselJsonLd } from 'next-seo';
+import { CarouselJsonLd } from '@chinggis-systems/next-seo';
 
 export default () => (
   <>
@@ -2760,7 +2756,7 @@ export default NewsArticle;
 
 ```jsx
 import React from 'react';
-import { SoftwareAppJsonLd } from 'next-seo';
+import { SoftwareAppJsonLd } from '@chinggis-systems/next-seo';
 
 export default () => (
   <>
@@ -2801,7 +2797,7 @@ For reference and more info check [Google docs for Software App](https://develop
 
 ```jsx
 import React from 'react';
-import { OrganizationJsonLd } from 'next-seo';
+import { OrganizationJsonLd } from '@chinggis-systems/next-seo';
 
 export default () => (
   <>
@@ -2880,7 +2876,7 @@ For reference and more info check [Docs](https://schema.org/Organization)
 
 ```jsx
 import React from 'react';
-import { BrandJsonLd } from 'next-seo';
+import { BrandJsonLd } from '@chinggis-systems/next-seo';
 
 export default () => (
   <>
@@ -2921,7 +2917,7 @@ For reference and more info check [Docs](https://schema.org/Brand)
 
 ```jsx
 import React from 'react';
-import { WebPageJsonLd } from 'next-seo';
+import { WebPageJsonLd } from '@chinggis-systems/next-seo';
 
 export default () => (
   <>
@@ -2958,4 +2954,4 @@ For reference and more info check [Docs](https://schema.org/Brand)
 
 ## Contributors
 
-A massive thank you to [everyone who contributes](https://github.com/garmeeh/next-seo/graphs/contributors) to this project 👏
+A massive thank you to [everyone who contributes](https://github.com/garmeeh/@chinggis-systems/next-seo/graphs/contributors) to this project 👏

@@ -10,8 +10,8 @@ function Course() {
         description="Introductory CS course laying out the basics."
         abstract="Introductory CS course laying out the basics"
         author={{
-          familyName: 'Byambaa',
-          givenName: 'Turtuvshin',
+          familyName: 'John',
+          givenName: 'Doe',
           jobTitle: 'Software engineer',
           telephone: '+97699888811',
           email: 'turuu@dev.mn',

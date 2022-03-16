@@ -6,8 +6,8 @@ function Person() {
     <>
       <h1>Person</h1>
       <PersonJsonLd
-        familyName="Byambaa"
-        givenName="Turtuvshin"
+        familyName="John"
+        givenName="Doe"
         jobTitle="Software engineer"
         telephone="+97699888811"
         email="turuu@dev.mn"

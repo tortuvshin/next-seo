@@ -13,8 +13,8 @@ export interface CourseJsonLdProps extends JsonLdProps {
   abstract: string;
   numberOfCredits: string;
   educationalLevel: string;
-  author: Person;
   contentLocation: string;
+  author: Person;
   provider: Provider;
 }
 

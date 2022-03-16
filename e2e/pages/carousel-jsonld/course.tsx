@@ -5,25 +5,55 @@ import Links from '../../components/links';
 const Course = () => (
   <>
     <h1>Carousel Course JSON-LD</h1>
-
     <CarouselJsonLd
       ofType="course"
       data={[
         {
-          courseName: 'Course 1',
-          description: 'Course 1 Description',
-          providerName: 'Course Provider',
-          url: 'http://example.com/course-1.html',
+          courseName: 'Course Name',
+          description: 'Introductory CS course laying out the basics.',
+          abstract: 'Introductory CS course laying out the basics',
+          author: {
+            familyName: 'John',
+            givenName: 'Doe',
+            jobTitle: 'Software engineer',
+            telephone: '+97699888811',
+            email: 'turuu@dev.mn',
+            description: '',
+            subjectOf: {},
+          },
+          url: '',
+          contentLocation: '',
+          educationalLevel: '',
+          numberOfCredits: '',
+          provider: {
+            name: 'Course Provider',
+            url: 'https//www.example.com/provider',
+          },
         },
         {
-          courseName: 'Course 2',
-          description: 'Course 2 Description',
-          providerName: 'Course Provider',
-          url: 'http://example.com/course-2.html',
+          courseName: 'Course Name',
+          description: 'Introductory CS course laying out the basics.',
+          abstract: 'Introductory CS course laying out the basics',
+          author: {
+            familyName: 'John',
+            givenName: 'Doe',
+            jobTitle: 'Software engineer',
+            telephone: '+97699888811',
+            email: 'turuu@dev.mn',
+            description: '',
+            subjectOf: {},
+          },
+          url: '',
+          contentLocation: '',
+          educationalLevel: '',
+          numberOfCredits: '',
+          provider: {
+            name: 'Course Provider',
+            url: 'https//www.example.com/provider',
+          },
         },
       ]}
     />
-
     <Links />
   </>
 );

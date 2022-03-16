@@ -2,7 +2,7 @@ import React from 'react';
 
 import { JsonLd, JsonLdProps } from './jsonld';
 
-import type { CourseJsonLdProps, RecipeJsonLdProps } from 'src/index';
+import { CourseJsonLdProps, RecipeJsonLdProps, setProvider } from 'src/index';
 import type { Review, AggregateRating } from 'src/types';
 import { setReviews } from 'src/utils/schema/setReviews';
 import { setAuthor } from 'src/utils/schema/setAuthor';
@@ -14,6 +14,7 @@ import { NewsArticleJsonLdProps } from './newsarticle';
 import { setPublisher } from 'src/utils/schema/setPublisher';
 import { PersonJsonLdProps } from './person';
 import { setCreativeWork } from 'src/utils/schema/setCreativeWork';
+import { setPerson } from 'src/utils/schema/setPerson';
 
 type Director = {
   name: string;
@@ -78,22 +79,20 @@ function CarouselJsonLd({
         }));
 
       case 'course':
-        return (data as ExtendedCourseJsonLdProps[]).map((item, index) => ({
-          '@type': 'ListItem',
-          position: `${index + 1}`,
-          item: {
-            '@context': 'https://schema.org',
-            '@type': 'Course',
-            url: item.url,
-            name: item.courseName,
-            description: item.description,
-            provider: {
-              '@type': 'Organization',
-              name: item.providerName,
-              sameAs: item.providerUrl,
+        return (data as ExtendedCourseJsonLdProps[]).map(
+          ({ courseName, provider, author, ...rest }, index) => ({
+            '@type': 'ListItem',
+            position: `${index + 1}`,
+            item: {
+              '@context': 'https://schema.org',
+              '@type': 'Course',
+              ...rest,
+              name: courseName,
+              author: setPerson(author),
+              provider: setProvider(provider),
             },
-          },
-        }));
+          }),
+        );
 
       case 'movie':
         return (data as MovieJsonLdProps[]).map((item, index) => ({
