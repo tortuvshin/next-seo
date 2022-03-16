@@ -1,7 +1,7 @@
 {
   "name": "@chinggis-systems/next-seo",
-  "version": "5.1.6",
-  "description": "SEO plugin for Next.js projects",
+  "version": "5.1.8",
+  "description": "SEO plugin for Next.js projects. Easily insert valid Schema.org JSON-LD",
   "source": "src/index.tsx",
   "main": "lib/next-seo.js",
   "module": "lib/next-seo.module.js",

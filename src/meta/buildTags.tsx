@@ -575,6 +575,14 @@ const buildTags = (config: BuildTagsParams) => {
           defaultHeight: defaults.defaultOpenGraphImageHeight,
         }),
       );
+      // TODO: Header ээс тусад нь авдаг болгоно
+      tagsToRender.push(
+        <meta
+          key="twitter:image"
+          name="twitter:image"
+          content={config.openGraph.images[0].url}
+        />,
+      );
     }
 
     // videos
