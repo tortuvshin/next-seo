@@ -22,6 +22,7 @@ export { setOffer } from 'src/utils/schema/setOffer';
 export { setOffers } from 'src/utils/schema/setOffers';
 export { setOpeningHours } from 'src/utils/schema/setOpeningHours';
 export { setPerformer } from 'src/utils/schema/setPerformer';
+export { setPerson } from 'src/utils/schema/setPerson';
 export { setProducer } from 'src/utils/schema/setProducer';
 export { setProvider } from 'src/utils/schema/setProvider';
 export { setPublisher } from 'src/utils/schema/setPublisher';
