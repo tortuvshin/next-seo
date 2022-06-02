@@ -342,6 +342,11 @@ export type Publisher = {
   name: string;
 };
 
+export type ReviewedBy = {
+  type?: string;
+  name: string;
+};
+
 export type ApplicationCategory =
   | 'Game'
   | 'SocialNetworking'

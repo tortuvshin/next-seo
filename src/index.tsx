@@ -50,7 +50,10 @@ export {
   default as SiteLinksSearchBoxJsonLd,
   SiteLinksSearchBoxJsonLdProps,
 } from './jsonld/siteLinksSearchBox';
-export { default as SocialProfileJsonLd } from './jsonld/socialProfile';
+export {
+  default as SocialProfileJsonLd,
+  SocialProfileJsonLdProps,
+} from './jsonld/socialProfile';
 export {
   default as SoftwareAppJsonLd,
   SoftwareAppJsonLdProps,
@@ -64,4 +67,5 @@ export { default as WebPageJsonLd, WebPageJsonLdProps } from './jsonld/webPage';
 export { default as DefaultSeo } from './meta/defaultSEO';
 export { default as NextSeo } from './meta/nextSEO';
 export * from './types';
+export { DefaultSeoProps, NextSeoProps } from './types';
 export * from './utils/schema/index';

@@ -1,6 +1,6 @@
 import React from 'react';
-import { setProvider } from 'src/index';
 import { CreativeWork, Provider } from 'src/types';
+import { setReviewedBy } from 'src/utils/schema/setReviewedBy';
 import { JsonLd } from './jsonld';
 
 export interface WebPageJsonLdProps {
@@ -26,15 +26,14 @@ function WebPageJsonLd({
   mainContentOfPage,
   ...rest
 }: WebPageJsonLdProps) {
+  const data = {
+    ...rest,
+    reviewedBy: setReviewedBy(reviewedBy),
+  };
   return (
     <JsonLd
       keyOverride={keyOverride}
-      {...rest}
-      reviewedBy={{
-        '@type': reviewedBy?.type || 'Organization',
-        ...reviewedBy,
-      }}
-      provider={setProvider(provider)}
+      {...data}
       type="WebPage"
       scriptKey="WebPage"
     />

@@ -1,7 +1,7 @@
 # Next SEO
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-15-orange.svg?style=flat-square)](#contributors)
-![npm](https://img.shields.io/npm/dw/@chinggis-systems/@chinggis-systems/next-seo?style=flat-square)
+![npm](https://img.shields.io/npm/dw/@chinggis-systems/next-seo?style=flat-square)
 
 Next SEO is a plugin that makes managing your SEO easier in Next.js projects.
 
@@ -39,6 +39,7 @@ looking for inspiration on what to add.
     - [Book](#book)
     - [Profile](#profile)
 - [JSON-LD](#json-ld)
+  - [JSON-LD Security](#json-ld-security)
   - [Handling multiple instances](#handling-multiple-instances)
   - [Article](#article-1)
   - [Breadcrumb](#breadcrumb)
@@ -971,6 +972,14 @@ Below you will find a very basic page implementing each of the available JSON-LD
 - [News Article](#news-article)
 
 Pull request very welcome to add any from the list [found on here](https://developers.google.com/search/docs/data-types/article)
+
+#### JSON-LD Security
+
+Just a quick note on security. To get JSON-LD onto the page it needs to be in a script tag. `next-seo` achieves this by using a script tag with `dangerouslySetInnerHTML`.
+
+So if passing anything directly from a URL to one of the components below please ensure you sanitize it first if needed.
+
+View `toJson.tsx` for implementation detail.
 
 #### Handling multiple instances
 
