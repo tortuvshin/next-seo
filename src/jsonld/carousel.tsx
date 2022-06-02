@@ -15,6 +15,7 @@ import { setPublisher } from 'src/utils/schema/setPublisher';
 import { PersonJsonLdProps } from './person';
 import { setCreativeWork } from 'src/utils/schema/setCreativeWork';
 import { setPerson } from 'src/utils/schema/setPerson';
+import { RoomJsonLdProps } from './room';
 
 type Director = {
   name: string;
@@ -38,6 +39,8 @@ interface ExtendedNewsArticleJsonLdProps
   extends DefaultDataProps,
     NewsArticleJsonLdProps {}
 
+interface ExtendedRoomJsonLdProps extends DefaultDataProps, RoomJsonLdProps {}
+
 export interface MovieJsonLdProps {
   name: string;
   url: string;
@@ -49,7 +52,14 @@ export interface MovieJsonLdProps {
 }
 
 export interface CarouselJsonLdProps extends JsonLdProps {
-  ofType: 'default' | 'movie' | 'recipe' | 'course' | 'person' | 'newsArticle';
+  ofType:
+    | 'default'
+    | 'movie'
+    | 'recipe'
+    | 'course'
+    | 'person'
+    | 'newsArticle'
+    | 'room';
   data:
     | any
     | DefaultDataProps[]
@@ -57,7 +67,8 @@ export interface CarouselJsonLdProps extends JsonLdProps {
     | ExtendedCourseJsonLdProps[]
     | ExtendedRecipeJsonLdProps[]
     | ExtendedPersonJsonLdProps[]
-    | ExtendedNewsArticleJsonLdProps[];
+    | ExtendedNewsArticleJsonLdProps[]
+    | ExtendedRoomJsonLdProps;
 }
 
 function CarouselJsonLd({
@@ -90,6 +101,19 @@ function CarouselJsonLd({
               name: courseName,
               author: setPerson(author),
               provider: setProvider(provider),
+            },
+          }),
+        );
+
+      case 'room':
+        return (data as ExtendedRoomJsonLdProps[]).map(
+          ({ ...rest }, index) => ({
+            '@type': 'ListItem',
+            position: `${index + 1}`,
+            item: {
+              '@context': 'https://schema.org',
+              '@type': 'Room',
+              ...rest,
             },
           }),
         );

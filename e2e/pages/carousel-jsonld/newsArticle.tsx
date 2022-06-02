@@ -1,5 +1,5 @@
 import React from 'react';
-import { CarouselJsonLd } from '../../../lib';
+import { CarouselJsonLd } from '../../../src';
 import Links from '../../components/links';
 
 const NewsArticle = () => (
